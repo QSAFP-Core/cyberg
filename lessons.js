@@ -16,14 +16,55 @@
      mission  something to do off-screen. links use names from links.js:
               instagram, talkspresso, challenge, finalsay, quorum
               (talkspresso automatically uses the grade's link if set)
+   BACKDROP VIDEO (bg): a 9:16 MP4 that plays dimmed behind the game.
+     Open it in Clipchamp or Adobe Express, add your music and voiceover,
+     export with the SAME file name into the media folder, and the game
+     picks it up. Sound starts muted; one tap turns it on.
    All lessons are original Cyberg(TM) content.
    ===================================================================== */
 
 window.CYBERG_LESSONS = {
 
+  /* ------------------------- CYBERG CORE (Middle + High School) ------------------------- */
+  "synapses": {
+    grade: "MH", subject: "Brain science", color: "#73e0ff", bg: "media/bg-synapse.mp4",
+    title: "Is your phone a synapse?",
+    steps: [
+      { type: "hook", text: "We say \"we treat smartphones like synapses.\" Bold claim! First, find out what a synapse really is. Then YOU decide if the comparison holds up." },
+      { type: "quorum", q: "What is a synapse?",
+        answers: [
+          { t: "The tiny junction where one nerve cell passes a signal to the next one, usually by releasing chemical messengers across a small gap." },
+          { t: "A synapse is a type of nerve cell in your brain. You have billions of them, and they do your thinking.", wrong: true },
+          { t: "A connection point between neurons. Signals cross it, and connections you use a lot tend to get stronger." } ],
+        explain: "A synapse isn't a cell. It's the connection BETWEEN nerve cells (neurons), where a signal crosses from one to the next. Your brain has trillions of them, and learning changes them." },
+      { type: "sort", prompt: "Fact or myth?", bins: ["Fact", "Myth"],
+        items: [
+          { t: "Signals often cross a synapse using chemical messengers", bin: 0 },
+          { t: "A synapse is a whole brain cell", bin: 1 },
+          { t: "Connections you use often tend to get stronger", bin: 0 },
+          { t: "Your brain's connections are fixed and never change", bin: 1 },
+          { t: "Learning something new changes your synapses", bin: 0 },
+          { t: "Only grown-ups have synapses", bin: 1 } ] },
+      { type: "sort", prompt: "Critical thinking: where does \"phone = synapse\" hold up, and where does it break?",
+        bins: ["Holds up", "Breaks down"],
+        items: [
+          { t: "A synapse connects one neuron to others. Your phone connects your mind to your AI squad and to people.", bin: 0 },
+          { t: "Connections you practice get stronger. Practicing with your squad makes you sharper.", bin: 0 },
+          { t: "A synapse is part of your body. Your phone is a tool you can put down.", bin: 1 },
+          { t: "A synapse can't choose what to pass along. YOU choose what to share and what to believe.", bin: 1 },
+          { t: "Signals cross a synapse fast. Your squad can bring you ideas in seconds.", bin: 0 },
+          { t: "Mindless scrolling builds brainpower, just like a synapse firing.", bin: 1 } ] },
+      { type: "call", prompt: "In your own words: what is a synapse, and is your phone one? Make your call.",
+        mvup: "Tell your squad how you like new words explained: with examples, pictures, or comparisons. That's part of your MVUP." },
+      { type: "mission", title: "Teach it back",
+        text: "Explain what a synapse is to someone at home in 30 seconds or less. Then ask them: \"Is a phone like a synapse?\" If you can explain it simply, you really understand it.",
+        links: [ { key: "quorum", label: "Meet the Quorum behind Cyberg™" } ] }
+    ]
+  },
+
   /* ------------------------------ ELEMENTARY ------------------------------ */
   "fall-leaves": {
-    grade: "E", subject: "Science", color: "#ffb347",
+    grade: "E", subject: "Science", color: "#ffb347", bg: "media/bg-fall-leaves.mp4",
     title: "Why do leaves change color?",
     steps: [
       { type: "hook", text: "Every fall, green trees turn yellow, orange and red. Where do those colors come from?" },
@@ -50,7 +91,7 @@ window.CYBERG_LESSONS = {
   },
 
   "fair-shares": {
-    grade: "E", subject: "Math", color: "#7aa8ff",
+    grade: "E", subject: "Math", color: "#7aa8ff", bg: "media/bg-fair-shares.mp4",
     title: "Fair shares: fractions",
     steps: [
       { type: "hook", text: "Would you rather have 1/3 of a pizza or 1/4 of the same pizza? Think fast!" },
@@ -76,7 +117,7 @@ window.CYBERG_LESSONS = {
 
   /* ----------------------------- MIDDLE SCHOOL ---------------------------- */
   "battery-power": {
-    grade: "M", subject: "Science", color: "#52ff9e",
+    grade: "M", subject: "Science", color: "#52ff9e", bg: "media/bg-battery-power.mp4",
     title: "How does a battery work?",
     steps: [
       { type: "hook", text: "Your phone, your earbuds, electric cars and even city power grids run on batteries. What's actually happening inside one?" },
@@ -102,7 +143,7 @@ window.CYBERG_LESSONS = {
   },
 
   "bill-of-rights": {
-    grade: "M", subject: "Civics", color: "#ff7a6b",
+    grade: "M", subject: "Civics", color: "#ff7a6b", bg: "media/bg-bill-of-rights.mp4",
     title: "Your rights: the Bill of Rights",
     steps: [
       { type: "hook", text: "Ten short amendments protect your freedom to speak, worship, gather and get a fair trial. How well do you know them?" },
@@ -131,7 +172,7 @@ window.CYBERG_LESSONS = {
 
   /* ------------------------------ HIGH SCHOOL ----------------------------- */
   "spot-the-fallacy": {
-    grade: "H", subject: "Logic", color: "#ad7aff",
+    grade: "H", subject: "Logic", color: "#ad7aff", bg: "media/bg-spot-the-fallacy.mp4",
     title: "Spot the fallacy",
     steps: [
       { type: "hook", text: "Arguments online are full of tricks that sound convincing but don't hold up. Can you catch them, even when an AI makes them?" },
@@ -159,7 +200,7 @@ window.CYBERG_LESSONS = {
   },
 
   "supply-demand": {
-    grade: "H", subject: "Economics", color: "#ffc74d",
+    grade: "H", subject: "Economics", color: "#ffc74d", bg: "media/bg-supply-demand.mp4",
     title: "Supply and demand",
     steps: [
       { type: "hook", text: "Why do concert tickets cost a fortune for some shows and almost nothing for others? Two forces run every market." },

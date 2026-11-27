@@ -24,6 +24,7 @@
 
    CHALLENGE card (the "Which AI wrote this?" game):
      { type: "challenge", voice: 1 },        voice 1 to 7
+     optional  bg: "media/my-backdrop.mp4"   a video (with your music) behind the game
 
    KILROY WAS HERE (optional, on any card):
      add  kilroy: "https://www.instagram.com/p/XXXXXXXX/"
@@ -39,25 +40,26 @@
 window.KILROY_DEFAULT = "";   // "" = use the Instagram link in links.js
 
 window.CYBERG_FEED = [
-  { type: "video",
-    url: "media/cyberg-placeholder-9x16.mp4",
-    poster: "media/cyberg-placeholder-poster.jpg",
-    label: "What if your mind had a squad?",
-    caption: "Paired. Synced. Still you." },
-
+  { type: "video", url: "media/v-squad-intro.mp4", poster: "media/v-squad-intro.jpg" },
+  { type: "lesson", id: "synapses" },
   { type: "lesson", id: "fall-leaves" },
-  { type: "challenge", voice: 1, grades: "MH" },
+  { type: "video", url: "media/v-youth-orbital.mp4", poster: "media/v-youth-orbital.jpg" },
+  { type: "challenge", voice: 1, grades: "MH", bg: "media/bg-challenge-01.mp4" },
   { type: "lesson", id: "battery-power" },
+  { type: "video", url: "media/v-crystalline.mp4", poster: "media/v-crystalline.jpg" },
   { type: "lesson", id: "spot-the-fallacy" },
-
-  { type: "video",
-    url: "media/cyberg-placeholder-9x16.mp4",
-    poster: "media/cyberg-placeholder-poster.jpg",
-    label: "Build your squad",
-    caption: "Placeholder: your next 9:16 video goes here." },
-
+  { type: "challenge", voice: 2, grades: "MH", bg: "media/bg-challenge-02.mp4" },
+  { type: "video", url: "media/v-youth-crystalline.mp4", poster: "media/v-youth-crystalline.jpg" },
   { type: "lesson", id: "fair-shares" },
-  { type: "challenge", voice: 2, grades: "MH" },
+  { type: "challenge", voice: 3, grades: "MH", bg: "media/bg-challenge-03.mp4" },
+  { type: "video", url: "media/v-kling.mp4", poster: "media/v-kling.jpg" },
   { type: "lesson", id: "bill-of-rights" },
+  { type: "challenge", voice: 4, grades: "MH", bg: "media/bg-challenge-04.mp4" },
+  { type: "video", url: "media/v-orbital.mp4", poster: "media/v-orbital.jpg" },
   { type: "lesson", id: "supply-demand" },
+  { type: "challenge", voice: 5, grades: "MH", bg: "media/bg-challenge-05.mp4" },
+  { type: "video", url: "media/v-youth-liquid.mp4", poster: "media/v-youth-liquid.jpg" },
+  { type: "challenge", voice: 6, grades: "MH", bg: "media/bg-challenge-06.mp4" },
+  { type: "video", url: "media/v-liquid.mp4", poster: "media/v-liquid.jpg" },
+  { type: "challenge", voice: 7, grades: "MH", bg: "media/bg-challenge-07.mp4" },
 ];
