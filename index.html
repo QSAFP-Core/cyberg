@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cyberging™ · The Cyberg™ Movement</title>
+<title>I AM A CYBERG™ · Cyberging™ · The Cyberg™ Movement</title>
 <meta name="description" content="The Cyberg™ Movement. Sovereign minds. Shared power. Swipe through videos and challenges, and learn to pair and sync with your own AI squad.">
 <meta name="theme-color" content="#04080f">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="The Cyberg™ Movement">
+<meta property="og:title" content="I AM A CYBERG™ · The Cyberg™ Movement">
 <meta property="og:description" content="Sovereign minds. Shared power.">
 <meta property="og:image" content="media/hero-poster.jpg">
 <style>
@@ -140,10 +140,13 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
 .quote{display:grid;place-items:center;text-align:center;padding:0 28px;z-index:1}
 .quote[hidden]{display:none}
 .qt{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(34px,calc(var(--card-w) * .125),68px);line-height:1.08;letter-spacing:-.01em;max-width:min(15ch,var(--card-w));margin:0 auto;
-  text-wrap:balance;text-shadow:0 4px 40px rgba(0,0,0,.7);opacity:0;transform:translateY(20px);transition:opacity 1s,transform 1s}
+  text-wrap:balance;text-shadow:0 4px 40px rgba(0,0,0,.7);opacity:0;transform:translateY(20px);transition:opacity 1s .4s,transform 1s .4s}
 .qt em{font-style:normal;color:var(--gold);text-shadow:0 0 50px rgba(255,180,60,.45)}
 .qby{margin-top:26px;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);
   opacity:0;transition:opacity 1s .5s}
+.qhead{margin-bottom:clamp(22px,4svh,40px);opacity:0;transition:opacity 1s}
+.qhead .h-top,.qhead .h-bot{font-size:clamp(26px,calc(var(--card-w) * .085),48px)}
+.quote.in .qhead{opacity:1}
 .quote.in .qt{opacity:1;transform:none}.quote.in .qby{opacity:1}
 .qmore{position:absolute;left:50%;bottom:max(34px,env(safe-area-inset-bottom));transform:translateX(-50%);min-height:44px;padding:0 20px;border-radius:22px;
   border:1px solid rgba(115,224,255,.5);background:rgba(4,8,15,.6);color:var(--cyan);font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;cursor:pointer;
@@ -243,7 +246,7 @@ body.g-E .kil{display:none}
     <source src="media/hero-bg.mp4" type="video/mp4">
   </video>
   <div class="hero-inner">
-    <h1><span class="h-top">THE CYBERG<sup class="tm">™</sup></span><span class="h-bot">MOVEMENT</span></h1>
+    <h1><span class="h-top">I AM A</span><span class="h-bot">CYBERG<sup class="tm">™</sup></span></h1>
     <p class="tag">Sovereign minds. Shared power.</p>
     <a class="hero-link" data-link="talkspresso" href="https://talkspresso.com/maxbruce" target="_blank" rel="noopener">talkspresso.com/maxbruce</a>
     <div class="gpick" role="group" aria-label="Choose your grade level">
@@ -255,7 +258,7 @@ body.g-E .kil{display:none}
 </section>
 
 <section class="snap quote" id="quote" aria-label="Quote">
-  <figure><blockquote class="qt"></blockquote><figcaption class="qby"></figcaption></figure>
+  <figure><div class="qhead"><span class="h-top">THE CYBERG<sup class="tm">™</sup></span><span class="h-bot">MOVEMENT</span></div><blockquote class="qt"></blockquote><figcaption class="qby"></figcaption></figure>
   <button class="qmore" type="button" hidden></button>
 </section>
 

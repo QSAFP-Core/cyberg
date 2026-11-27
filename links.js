@@ -24,7 +24,7 @@ window.CYBERG_LINKS = {
    Put *stars* around words to show them in gold. Leave "" to hide the screen. */
 window.CYBERG_QUOTE = {
   text: "We treat smartphones like *synapses*.",
-  by:   "The Cyberg™ Movement",
+  by:   "",          // optional line under the quote, e.g. "MAXBRUCE"
   more: "What's a synapse? Play and find out ↓",   // "" hides the link
   moreLesson: "synapses"                            // which lesson it jumps to
 };
