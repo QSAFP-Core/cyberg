@@ -153,6 +153,14 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
   opacity:0;transition:opacity 1s 1s;white-space:nowrap}
 .quote.in .qmore{opacity:1}
 
+/* ---------- PROMISE NOTES (between cards) ---------- */
+.pnote{display:grid;place-items:center;text-align:center;padding:0 28px}
+.pnote p{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(30px,calc(var(--card-w) * .11),60px);line-height:1.12;max-width:min(14ch,var(--card-w));
+  text-wrap:balance;opacity:0;transform:scale(.96);transition:opacity .8s,transform .8s}
+.pnote p em{font-style:normal;color:var(--gold)}
+.pnote small{display:block;margin-top:18px;font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;color:var(--dim);opacity:0;transition:opacity .8s .3s}
+.pnote.in p{opacity:1;transform:none}.pnote.in small{opacity:1}
+
 /* ---------- GRADE PICKER ---------- */
 .gpick{margin-top:clamp(18px,2.4vw,30px);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px}
 .gpick span{font-size:13px;color:var(--dim);margin-right:2px}
@@ -363,6 +371,11 @@ body.g-E .kil{display:none}
   /* ---------- build the feed from feed.js ---------- */
   var feed=document.getElementById("feed"), items=window.CYBERG_FEED||[], C=window.CHALLENGE;
   items.forEach(function(it,idx){
+    if(it.type==="note"){
+      var ns=el("section","snap slide pnote"); ns.dataset.grades="EMH"; ns.dataset.note="1";
+      ns.innerHTML='<div><p>'+esc(it.text).replace(/\*([^*]+)\*/g,"<em>$1</em>")+'</p><small>CYBERGING™</small></div>';
+      feed.appendChild(ns); return;
+    }
     var s=el("section","snap slide"); s.dataset.i=idx; s.dataset.grades=gradesOf(it); if(it.type==="lesson")s.dataset.lesson=it.id;
     var card=el("div","card");
     if(it.type==="lesson"){
@@ -525,6 +538,9 @@ body.g-E .kil{display:none}
     };
   }
 
+  var noteIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{threshold:.5});
+  document.querySelectorAll(".pnote").forEach(function(n){noteIO.observe(n)});
+
   /* ---------- play what's on screen, pause the rest ---------- */
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
     var card=e.target, v=card.querySelector("video");
@@ -627,6 +643,13 @@ body.g-E .kil{display:none}
   var gbtns=document.querySelectorAll(".gpick button");
   function applyGrade(g,jump){
     document.querySelectorAll(".slide").forEach(function(s){s.hidden=!!g&&s.dataset.grades.indexOf(g)<0});
+    var since=0;   // cards since the last promise screen: keep at least 3 between them
+    document.querySelectorAll(".slide").forEach(function(s){
+      if(s.hidden)return;
+      if(s.dataset.note){if(since<3)s.hidden=true;else since=0}else since++;
+    });
+    var vis=[].slice.call(document.querySelectorAll(".slide:not([hidden])")); var last=vis[vis.length-1];
+    if(last&&last.dataset.note)last.hidden=true;
     gbtns.forEach(function(b){b.classList.toggle("on",b.dataset.g===g)});
     document.body.classList.toggle("g-E",g==="E");
     store.set("grade",g); progress.draw();

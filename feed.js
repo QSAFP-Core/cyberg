@@ -33,6 +33,10 @@
      KILROY_DEFAULT below is used for any card without its own link
      (for example your Instagram profile). Leave it "" to hide the button.
 
+   PROMISE screen (a short line between cards):
+     { type: "note", text: "No ads. *Ever.*" },
+     *stars* make words gold. Shown to every grade.
+
    Add, remove or reorder whole { ... }, blocks.
    Keep the comma after each closing } and the quotes around text.
    ===================================================================== */
@@ -44,22 +48,27 @@ window.CYBERG_FEED = [
   { type: "lesson", id: "synapses" },
   { type: "lesson", id: "fall-leaves" },
   { type: "video", url: "media/v-youth-orbital.mp4", poster: "media/v-youth-orbital.jpg" },
+  { type: "note", text: "*0* data stored here." },
   { type: "challenge", voice: 1, grades: "MH", bg: "media/bg-challenge-01.mp4" },
   { type: "lesson", id: "battery-power" },
   { type: "video", url: "media/v-crystalline.mp4", poster: "media/v-crystalline.jpg" },
   { type: "lesson", id: "spot-the-fallacy" },
+  { type: "note", text: "No ads. *Ever.*" },
   { type: "challenge", voice: 2, grades: "MH", bg: "media/bg-challenge-02.mp4" },
   { type: "video", url: "media/v-youth-crystalline.mp4", poster: "media/v-youth-crystalline.jpg" },
   { type: "lesson", id: "fair-shares" },
   { type: "challenge", voice: 3, grades: "MH", bg: "media/bg-challenge-03.mp4" },
+  { type: "note", text: "No accounts. No tracking. *Just you.*" },
   { type: "video", url: "media/v-kling.mp4", poster: "media/v-kling.jpg" },
   { type: "lesson", id: "bill-of-rights" },
   { type: "challenge", voice: 4, grades: "MH", bg: "media/bg-challenge-04.mp4" },
   { type: "video", url: "media/v-orbital.mp4", poster: "media/v-orbital.jpg" },
+  { type: "note", text: "Your MVUP stays *yours*." },
   { type: "lesson", id: "supply-demand" },
   { type: "challenge", voice: 5, grades: "MH", bg: "media/bg-challenge-05.mp4" },
   { type: "video", url: "media/v-youth-liquid.mp4", poster: "media/v-youth-liquid.jpg" },
   { type: "challenge", voice: 6, grades: "MH", bg: "media/bg-challenge-06.mp4" },
+  { type: "note", text: "You keep the *final say*." },
   { type: "video", url: "media/v-liquid.mp4", poster: "media/v-liquid.jpg" },
   { type: "challenge", voice: 7, grades: "MH", bg: "media/bg-challenge-07.mp4" },
 ];
