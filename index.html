@@ -136,6 +136,80 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
 @media (max-width:600px){.hero{place-items:start center}.hero-inner{margin-top:24svh}
   .hero-inner::before{content:"";position:absolute;inset:-30px -10px;z-index:-1;background:radial-gradient(ellipse at center,rgba(0,0,0,.75),rgba(0,0,0,0) 70%)}
   .hero::after{background:radial-gradient(ellipse at 50% 48%,rgba(0,0,0,.6) 0%,rgba(0,0,0,.72) 75%),linear-gradient(180deg,transparent 60%,rgba(4,8,15,.9))}}
+/* ---------- GRADE PICKER ---------- */
+.gpick{margin-top:clamp(18px,2.4vw,30px);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px}
+.gpick span{font-size:13px;color:var(--dim);margin-right:2px}
+.gpick button{min-height:42px;padding:0 15px;border-radius:21px;border:1px solid rgba(255,255,255,.32);background:rgba(0,0,0,.4);color:#fff;
+  font-family:Montserrat,sans-serif;font-weight:700;font-size:13px;cursor:pointer;backdrop-filter:blur(6px)}
+.gpick button.on{background:var(--gold);color:#1a1205;border-color:var(--gold)}
+.gpick button:focus-visible,.nxt:focus-visible,.ans:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.slide[hidden]{display:none!important}
+body.g-E .kil{display:none}
+
+/* ---------- LESSON CARD ---------- */
+.lsn{display:flex;flex-direction:column;padding:20px 18px max(16px,env(safe-area-inset-bottom));
+  background:radial-gradient(ellipse at 50% -10%,color-mix(in srgb,var(--lc) 22%,transparent),transparent 60%),#060b14}
+.lrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.gchip{font-family:Montserrat,sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);
+  border:1px solid color-mix(in srgb,var(--g) 60%,transparent);padding:4px 9px;border-radius:20px}
+.lsub{font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--lc)}
+.ltitle{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(19px,calc(var(--card-w) * .062),26px);line-height:1.15;margin:9px 0 11px}
+.dots{display:flex;gap:5px}
+.dots i{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.12);transition:background .3s}
+.dots i.done{background:var(--lc)}.dots i.on{background:#fff}
+.lb{flex:1 1 auto;overflow-y:auto;padding:16px 2px 10px;animation:rise .35s both}
+.lk{font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:.26em;color:var(--gold)}
+.hk{font-family:Montserrat,sans-serif;font-weight:700;font-size:clamp(21px,calc(var(--card-w) * .068),29px);line-height:1.25;margin-top:14px}
+.lmap{margin-top:22px;display:grid;gap:9px}
+.lmap div{display:flex;gap:10px;align-items:center;font-size:14px;color:#c9d2ea}
+.lmap b{width:26px;height:26px;flex:none;border-radius:50%;display:grid;place-items:center;font-family:Montserrat,sans-serif;font-size:12px;
+  background:color-mix(in srgb,var(--lc) 25%,transparent);color:#fff}
+.q{font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;line-height:1.35;margin:10px 0 6px}
+.small{font-size:12.5px;line-height:1.45;color:var(--dim)}
+.ans{display:block;width:100%;text-align:left;padding:12px 14px;margin:10px 0;border-radius:14px;cursor:pointer;
+  background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.13);color:#e6ecff;font:15px/1.45 Inter,sans-serif;transition:all .2s}
+.ans b{display:block;font-family:Montserrat,sans-serif;font-size:11px;letter-spacing:.14em;color:var(--c);margin-bottom:4px}
+.ans.ok{border-color:rgba(82,255,158,.45);opacity:.75}
+.ans.glitch{border-color:#ff7a6b;background:rgba(255,122,107,.13);opacity:1}
+.ans.glitch b::after{content:"  ·  GLITCH";color:#ff7a6b}
+.fb{margin-top:6px;padding:12px 14px;border-radius:12px;background:rgba(115,224,255,.09);font-size:14px;line-height:1.5;animation:rise .3s both}
+.fb.warn{background:rgba(255,255,255,.06)}
+.cnt{display:flex;justify-content:space-between;font-size:12.5px;color:var(--dim);margin-top:10px}
+.sitem{margin:12px 0 14px;padding:20px 16px;min-height:120px;border-radius:16px;display:grid;place-items:center;text-align:center;
+  font-family:Montserrat,sans-serif;font-weight:700;font-size:17px;line-height:1.35;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.14);transition:background .2s,border-color .2s}
+.sitem.good{border-color:#52ff9e;background:rgba(82,255,158,.12)}
+.sitem.bad{border-color:#ff7a6b;background:rgba(255,122,107,.12);animation:shake .35s}
+.bins{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:8px}
+.bins button,.opts button{min-height:52px;padding:10px 6px;border-radius:12px;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px;line-height:1.25;
+  color:#fff;background:rgba(255,255,255,.05);border:1.5px solid color-mix(in srgb,var(--lc) 70%,transparent);cursor:pointer}
+.bins button:active,.opts button:active{transform:scale(.96)}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opts button{text-align:left;padding:12px 14px;font-weight:600}
+.opts button.bad{animation:shake .35s;border-color:#ff7a6b}
+.placed{list-style:none;counter-reset:p;display:grid;gap:6px;margin-top:12px}
+.placed li{counter-increment:p;padding:10px 12px 10px 40px;position:relative;border-radius:10px;background:color-mix(in srgb,var(--lc) 16%,transparent);font-size:14px;animation:rise .3s both}
+.placed li::before{content:counter(p);position:absolute;left:12px;top:9px;font-family:Montserrat,sans-serif;font-weight:800;color:var(--lc)}
+.lsn textarea{width:100%;min-height:120px;margin-top:12px;border-radius:12px;background:rgba(0,0,0,.35);border:1.5px solid rgba(255,255,255,.16);
+  color:#fff;font:16px/1.5 Inter,sans-serif;padding:12px;resize:none}
+.lsn textarea:focus{outline:none;border-color:var(--lc)}
+.mvup{margin-top:14px;padding:12px 14px;border-left:3px solid var(--gold);background:rgba(255,199,77,.08);border-radius:0 12px 12px 0;font-size:14px;line-height:1.5}
+.mvup b{color:var(--gold)}
+.mt{font-family:Montserrat,sans-serif;font-weight:800;font-size:21px;margin:10px 0 8px}
+.mtext{font-size:15px;line-height:1.55;color:#dde4f7}
+.mlinks{display:grid;gap:8px;margin-top:16px}
+.mlinks .cta{text-align:center}
+.note{font-size:12.5px;color:var(--dim);margin-top:12px}
+.badge{width:130px;height:130px;border-radius:50%;margin:26px auto 18px;display:grid;place-items:center;font-family:Montserrat,sans-serif;font-weight:800;font-size:54px;
+  color:#fff;background:radial-gradient(circle,color-mix(in srgb,var(--lc) 70%,transparent),transparent 70%);box-shadow:0 0 70px color-mix(in srgb,var(--lc) 45%,transparent);animation:pop .6s both}
+.donet{text-align:center}
+.donet p{margin-top:6px;color:#dde4f7}
+.lf{padding-top:10px}
+.nxt{width:100%;min-height:52px;border-radius:14px;border:0;background:var(--lc);color:#07101c;font-family:Montserrat,sans-serif;font-weight:800;font-size:15px;cursor:pointer}
+.nxt:disabled{background:rgba(255,255,255,.08);color:var(--dim);cursor:default}
+.kil small{font-size:10px;color:var(--dim);margin-left:2px}
+.erase{margin-top:10px;background:none;border:0;color:var(--dim);text-decoration:underline;font:12px Inter,sans-serif;cursor:pointer}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes pop{from{transform:scale(.4);opacity:0}70%{transform:scale(1.08)}to{transform:scale(1);opacity:1}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -149,7 +223,11 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
   <div class="hero-inner">
     <h1><span class="h-top">THE CYBERG<sup class="tm">™</sup></span><span class="h-bot">MOVEMENT</span></h1>
     <p class="tag">Sovereign minds. Shared power.</p>
-    <a class="hero-link" href="https://talkspresso.com/maxbruce" target="_blank" rel="noopener">talkspresso.com/maxbruce</a>
+    <a class="hero-link" data-link="talkspresso" href="https://talkspresso.com/maxbruce" target="_blank" rel="noopener">talkspresso.com/maxbruce</a>
+    <div class="gpick" role="group" aria-label="Choose your grade level">
+      <span>I'm in</span><button type="button" data-g="E">Elementary</button><button type="button" data-g="M">Middle School</button>
+      <button type="button" data-g="H">High School</button><button type="button" data-g="">Show all</button>
+    </div>
   </div>
   <a class="cue" href="#feed">SCROLL TO BEGIN<span></span></a>
 </section>
@@ -176,14 +254,17 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
     <span class="h-bot">CYBERG<sup class="tm">™</sup> MOVEMENT</span>
     <p class="tag" style="margin-top:18px">Paired. Synced. Still you.</p>
     <div class="links">
-      <a class="cta" href="https://thefinalsay.org/commandments/" target="_blank" rel="noopener">Take the full challenge</a>
-      <a class="cta ghost" href="https://talkspresso.com/maxbruce" target="_blank" rel="noopener">Meet Max on Talkspresso</a>
+      <a class="cta" data-link="challenge" href="https://thefinalsay.org/commandments/" target="_blank" rel="noopener">Take the full challenge</a>
+      <a class="cta ghost" data-link="talkspresso" href="https://talkspresso.com/maxbruce" target="_blank" rel="noopener">Meet Max on Talkspresso</a>
+      <a class="cta ghost" data-link="quorum" href="https://aicomsci.org" target="_blank" rel="noopener">Meet the Quorum</a>
     </div>
-    <p class="promise"><b>cyberging.org collects nothing.</b> No accounts, no sign-ups, no tracking. Your guesses stay on your screen, and your MVUP stays yours.</p>
+    <p class="promise"><b>cyberging.org collects nothing.</b> No accounts, no sign-ups, no tracking. Anything you type stays on this phone, and your MVUP stays yours.<br><button class="erase" type="button">Erase my answers from this phone</button></p>
   </div>
 </section>
 
+<script src="links.js"></script>
 <script src="challenge-data.js"></script>
+<script src="lessons.js"></script>
 <script src="feed.js"></script>
 <script>
 (function(){
@@ -206,19 +287,38 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
     return m?m[1]:null;
   }
 
+  var LINKS=window.CYBERG_LINKS||{}, LESSONS=window.CYBERG_LESSONS||{};
+  var GRADE_NAME={E:"Elementary",M:"Middle School",H:"High School"}, GRADE_COL={E:"#52ff9e",M:"#4dd9ff",H:"#ad7aff"};
+  function linkFor(key,grade){
+    if(key==="talkspresso"){var g={E:"talkspressoElementary",M:"talkspressoMiddle",H:"talkspressoHigh"}[grade];return (g&&LINKS[g])||LINKS.talkspresso||""}
+    return LINKS[key]||"";
+  }
+  function gradesOf(it){if(it.type==="lesson"){var L=LESSONS[it.id];return L?L.grade:"EMH"}return it.grades||"EMH"}
+  function chips(gr){return gr.split("").map(function(g){return'<span class="gchip" style="--g:'+GRADE_COL[g]+'">'+GRADE_NAME[g]+'</span>'}).join("")}
+  var store={
+    get:function(k){try{return localStorage.getItem("cyb:"+k)}catch(e){return null}},
+    set:function(k,v){try{localStorage.setItem("cyb:"+k,v)}catch(e){}},
+    clear:function(){try{Object.keys(localStorage).forEach(function(k){if(k.indexOf("cyb:")===0)localStorage.removeItem(k)})}catch(e){}}
+  };
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+  document.querySelectorAll("[data-link]").forEach(function(a){var u=linkFor(a.dataset.link);if(u){a.href=u;if(a.classList.contains("hero-link"))a.textContent=u.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,"")}});
+
   function kilroy(it){
-    var u=it.kilroy||window.KILROY_DEFAULT;
+    if(gradesOf(it)==="E")return null;                 // Instagram is 13+
+    var u=it.kilroy||window.KILROY_DEFAULT||LINKS.instagram;
     if(!u)return null;
-    var a=el("a","kil","<b>✍</b> Kilroy was here →"); a.href=u; a.target="_blank"; a.rel="noopener";
+    var a=el("a","kil","<b>✍</b> Kilroy was here → <small>13+</small>"); a.href=u; a.target="_blank"; a.rel="noopener";
     a.setAttribute("aria-label","Sign the Kilroy wall on Instagram"); return a;
   }
 
   /* ---------- build the feed from feed.js ---------- */
   var feed=document.getElementById("feed"), items=window.CYBERG_FEED||[], C=window.CHALLENGE;
   items.forEach(function(it,idx){
-    var s=el("section","snap slide"); s.dataset.i=idx;
+    var s=el("section","snap slide"); s.dataset.i=idx; s.dataset.grades=gradesOf(it);
     var card=el("div","card");
-    if(it.type==="challenge"&&C){
+    if(it.type==="lesson"){
+      buildLesson(card,it);
+    }else if(it.type==="challenge"&&C){
       buildGame(card,it);
     }else{
       var id=ytId(it.url);
@@ -240,6 +340,115 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
     s.appendChild(card); feed.appendChild(s);
   });
 
+  /* ---------- LESSONS ---------- */
+  function buildLesson(card,it){
+    var L=LESSONS[it.id];
+    if(!L){card.innerHTML='<div class="lsn" style="height:100%"><p class="small">Lesson "'+esc(it.id)+'" isn\'t in lessons.js yet.</p></div>';return}
+    card.classList.add("lsn"); card.style.setProperty("--lc",L.color||"#73e0ff");
+    var steps=L.steps, i=0;
+    card.innerHTML='<div class="lh"><div class="lrow">'+chips(L.grade)+'<span class="lsub">'+esc(L.subject)+'</span></div>'+
+      '<div class="ltitle">'+esc(L.title)+'</div><div class="dots">'+steps.map(function(){return"<i></i>"}).join("")+'<i></i></div></div>'+
+      '<div class="lb"></div><div class="lf"><button class="nxt" type="button">Start</button></div>';
+    var body=card.querySelector(".lb"), nxt=card.querySelector(".nxt"), dots=card.querySelectorAll(".dots i");
+    function ready(on,label){nxt.disabled=!on;if(label)nxt.textContent=label}
+    var R={
+      hook:function(st){
+        body.innerHTML='<div class="lk">LESSON · ABOUT 10 MINUTES</div><p class="hk">'+esc(st.text)+'</p>'+
+          '<div class="lmap"><div><b>1</b>Ask the Quorum: spot the glitch</div><div><b>2</b>Play</div><div><b>3</b>Make your call</div><div><b>4</b>Take on a mission</div></div>';
+        ready(true,i===0?"Start":"Next");
+      },
+      quorum:function(st){
+        var cols=["#4dd9ff","#ad7aff","#52ff9e"], ans=shuffle(st.answers);
+        body.innerHTML='<div class="lk">ASK THE QUORUM</div><p class="q">'+esc(st.q)+'</p>'+
+          '<p class="small">Example answers written for this lesson. One has a mistake. Tap the glitch.</p>'+
+          ans.map(function(a,k){return'<button type="button" class="ans" style="--c:'+cols[k]+'"><b>AI '+"ABC"[k]+'</b>'+esc(a.t)+'</button>'}).join("")+'<div class="fbx"></div>';
+        var fbx=body.querySelector(".fbx");
+        body.querySelectorAll(".ans").forEach(function(b,k){b.onclick=function(){
+          if(ans[k].wrong){
+            b.classList.add("glitch"); fbx.innerHTML='<div class="fb"><b>Glitch found!</b> '+esc(st.explain)+'</div>'; ready(true,"Next");
+            body.querySelectorAll(".ans").forEach(function(x){x.disabled=true});
+          }else{b.classList.add("ok"); fbx.innerHTML='<div class="fb warn">This one checks out. Keep looking.</div>'}
+        }});
+        ready(false,"Find the glitch");
+      },
+      sort:function(st){
+        var items=shuffle(st.items), k=0, score=0, busy=false;
+        body.innerHTML='<div class="lk">PLAY</div><p class="q">'+esc(st.prompt)+'</p><div class="sitem"></div><div class="bins">'+
+          st.bins.map(function(b,j){return'<button type="button" data-j="'+j+'">'+esc(b)+'</button>'}).join("")+
+          '</div><div class="cnt"><span class="pos"></span><span class="sc"></span></div>';
+        var box=body.querySelector(".sitem"), pos=body.querySelector(".pos"), sc=body.querySelector(".sc"), btns=body.querySelectorAll(".bins button");
+        function draw(){box.className="sitem";box.textContent=items[k].t;pos.textContent=(k+1)+" of "+items.length;sc.textContent=score+" right"}
+        btns.forEach(function(b){b.onclick=function(){
+          if(busy)return; busy=true;
+          var right=+b.dataset.j===items[k].bin; if(right)score++;
+          box.classList.add(right?"good":"bad");
+          if(!right)box.textContent=items[k].t+"  →  "+st.bins[items[k].bin];
+          sc.textContent=score+" right";
+          setTimeout(function(){
+            busy=false; k++;
+            if(k<items.length){draw();return}
+            box.className="sitem good";
+            box.textContent=score===items.length?"Perfect! "+score+" of "+items.length:"You got "+score+" of "+items.length+"!";
+            btns.forEach(function(x){x.disabled=true}); ready(true,"Next");
+          },right?650:1500);
+        }});
+        draw(); ready(false,"Sort them all");
+      },
+      order:function(st){
+        var placed=0, opts=shuffle(st.items);
+        body.innerHTML='<div class="lk">PLAY</div><p class="q">'+esc(st.prompt)+'</p><ol class="placed"></ol><div class="opts">'+
+          opts.map(function(o){return'<button type="button">'+esc(o)+'</button>'}).join("")+'</div><div class="fbx"></div>';
+        var list=body.querySelector(".placed"), fbx=body.querySelector(".fbx");
+        body.querySelectorAll(".opts button").forEach(function(b){b.onclick=function(){
+          if(b.textContent===st.items[placed]){
+            placed++; list.appendChild(el("li",null,esc(b.textContent))); b.remove(); fbx.innerHTML="";
+            if(placed===st.items.length){fbx.innerHTML='<div class="fb"><b>Nailed it.</b> That\'s the right order.</div>';ready(true,"Next")}
+          }else{b.classList.remove("bad");void b.offsetWidth;b.classList.add("bad");fbx.innerHTML='<div class="fb warn">Not yet. What comes next?</div>'}
+        }});
+        ready(false,"Tap them in order");
+      },
+      call:function(st){
+        var key="call:"+it.id;
+        body.innerHTML='<div class="lk">YOUR CALL</div><p class="q">'+esc(st.prompt)+'</p>'+
+          '<textarea maxlength="500" placeholder="Type your answer…" aria-label="Your answer"></textarea>'+
+          '<p class="small">This stays on this phone only. Nothing is sent anywhere.</p><div class="mvup"><b>MVUP</b> · '+esc(st.mvup)+'</div>';
+        var ta=body.querySelector("textarea"); ta.value=store.get(key)||"";
+        ta.oninput=function(){store.set(key,ta.value)};
+        ready(true,"Next");
+      },
+      mission:function(st){
+        var links=(st.links||[]).filter(function(l){return !(L.grade==="E"&&l.key==="instagram")}).map(function(l){
+          var u=linkFor(l.key,L.grade); return u?'<a class="cta ghost" href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(l.label)+' →</a>':"";
+        }).join("");
+        body.innerHTML='<div class="lk">MISSION</div><p class="mt">'+esc(st.title)+'</p><p class="mtext">'+esc(st.text)+'</p>'+
+          (links?'<div class="mlinks">'+links+'</div>':'')+(st.note?'<p class="note">'+esc(st.note)+'</p>':'');
+        ready(true,"Mission accepted");
+      }
+    };
+    function done(){
+      var today=new Date().toDateString(), y=new Date(Date.now()-864e5).toDateString(), last=store.get("last"), streak=+(store.get("streak")||0);
+      if(last!==today){streak=last===y?streak+1:1;store.set("streak",streak);store.set("last",today)}
+      var doneSet=(store.get("done")||"").split(",").filter(Boolean);
+      if(doneSet.indexOf(it.id)<0){doneSet.push(it.id);store.set("done",doneSet.join(","))}
+      body.innerHTML='<div class="donet"><div class="lk">LESSON COMPLETE</div><div class="badge">✓</div>'+
+        '<p class="mt">'+esc(L.title)+'</p><p>Knowledge + judgment. That\'s how Cybergs™ learn.</p>'+
+        '<p class="small" style="margin-top:12px">'+doneSet.length+' lesson'+(doneSet.length===1?'':'s')+' done · '+streak+'-day streak</p></div>';
+      ready(true,"Next card ↓"); progress.mark(card);
+    }
+    function show(){
+      dots.forEach(function(d,k){d.className=k<i?"done":k===i?"on":""});
+      body.innerHTML=""; body.scrollTop=0; body.style.animation="none"; void body.offsetWidth; body.style.animation="";
+      var st=steps[i]; if(!st){done();return}
+      (R[st.type]||R.hook)(st);
+    }
+    nxt.onclick=function(){
+      if(i<steps.length){i++;show();return}
+      var n=card.closest(".slide").nextElementSibling; while(n&&n.hidden)n=n.nextElementSibling;
+      (n||document.getElementById("end")).scrollIntoView({behavior:"smooth"});
+    };
+    show();
+  }
+
   function buildGame(card,it){
     var n=Math.max(1,Math.min(C.voices.length,it.voice||1)), v=C.voices[n-1];
     card.classList.add("game");
@@ -251,7 +460,7 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
       '<div class="picks">'+C.names.map(function(name,k){return'<button type="button" style="--c:'+AI_COLORS[k%AI_COLORS.length]+'">'+esc(name)+'</button>'}).join("")+'</div>'+
       '<div class="locked">'+(C.tagline?'<div class="tagl">'+esc(C.tagline).replace(/\. (?=[^.]*\.?$)/,'.<br>')+'</div>':'')+'<div class="call">Your call: <em></em></div>'+
       '<div class="note">'+esc(C.revealNote)+'</div>'+
-      '<div class="ctas"><a class="cta" href="'+esc(C.fullChallengeUrl)+'" target="_blank" rel="noopener">Lock it in → thefinalsay.org</a>'+
+      '<div class="ctas"><a class="cta" href="'+esc(LINKS.challenge||C.fullChallengeUrl)+'" target="_blank" rel="noopener">Lock it in → thefinalsay.org</a>'+
       '<button class="cta ghost share" type="button">Share</button></div></div>';
     var kg=kilroy(it); if(kg)card.querySelector(".locked").appendChild(kg);
     var btns=card.querySelectorAll(".picks button"), pick=null;
@@ -284,11 +493,12 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
 
   /* ---------- side rails: Scroller → Builder → Cyberg, squad lights up ---------- */
   var progress=(function(){
-    var seen=new Set(), total=Math.max(1,items.length);
+    var seen=new Set();
     var rails=document.querySelectorAll(".rail"), steps=document.querySelectorAll(".journey li"),
         bar=document.querySelector(".journey i"), dots=document.querySelectorAll(".squad b");
     function draw(){
-      var f=seen.size/total;
+      var vis=[].slice.call(document.querySelectorAll(".slide:not([hidden]) .card"));
+      var f=vis.filter(function(c){return seen.has(c)}).length/Math.max(1,vis.length);
       bar.style.setProperty("--p",(f*100)+"%");
       steps.forEach(function(s,k){s.classList.toggle("lit",f>=k/2)});
       dots.forEach(function(d,k){d.classList.toggle("lit",k===0||f>=k/(dots.length-1))});
@@ -363,6 +573,20 @@ sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;f
   heroIO.observe(document.getElementById("top"));
   document.getElementById("field").style.transition="opacity .8s";
   progress.draw();
+
+  /* ---------- grade picker: filters the feed, remembered on this phone only ---------- */
+  var gbtns=document.querySelectorAll(".gpick button");
+  function applyGrade(g,jump){
+    document.querySelectorAll(".slide").forEach(function(s){s.hidden=!!g&&s.dataset.grades.indexOf(g)<0});
+    gbtns.forEach(function(b){b.classList.toggle("on",b.dataset.g===g)});
+    document.body.classList.toggle("g-E",g==="E");
+    store.set("grade",g); progress.draw();
+    if(jump)document.getElementById("feed").scrollIntoView({behavior:"smooth"});
+  }
+  gbtns.forEach(function(b){b.onclick=function(){applyGrade(b.dataset.g,true)}});
+  var g0=store.get("grade"); if(g0)applyGrade(g0,false);
+  var er=document.querySelector(".erase");
+  if(er)er.onclick=function(){store.clear();document.querySelectorAll(".lsn textarea").forEach(function(t){t.value=""});er.textContent="Erased. Nothing is left on this phone."};
 })();
 </script>
 </body>

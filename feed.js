@@ -15,6 +15,13 @@
        <iframe ... src="https://www.youtube.com/embed/90xaF7fadL8" ...></iframe>
      For your own mp4 files you can add  poster: "media/frame.jpg"
 
+   LESSON card (about 10 minutes, from lessons.js):
+     { type: "lesson", id: "fall-leaves" },
+
+   GRADE LABELS: lessons carry their own grade. For videos and challenges add
+     grades: "E" Elementary, "M" Middle School, "H" High School, or any mix like "MH".
+     No grades = shown to everyone. The grade buttons on the title screen use these.
+
    CHALLENGE card (the "Which AI wrote this?" game):
      { type: "challenge", voice: 1 },        voice 1 to 7
 
@@ -29,7 +36,7 @@
    Keep the comma after each closing } and the quotes around text.
    ===================================================================== */
 
-window.KILROY_DEFAULT = "";
+window.KILROY_DEFAULT = "";   // "" = use the Instagram link in links.js
 
 window.CYBERG_FEED = [
   { type: "video",
@@ -38,7 +45,10 @@ window.CYBERG_FEED = [
     label: "What if your mind had a squad?",
     caption: "Paired. Synced. Still you." },
 
-  { type: "challenge", voice: 1 },
+  { type: "lesson", id: "fall-leaves" },
+  { type: "challenge", voice: 1, grades: "MH" },
+  { type: "lesson", id: "battery-power" },
+  { type: "lesson", id: "spot-the-fallacy" },
 
   { type: "video",
     url: "media/cyberg-placeholder-9x16.mp4",
@@ -46,5 +56,8 @@ window.CYBERG_FEED = [
     label: "Build your squad",
     caption: "Placeholder: your next 9:16 video goes here." },
 
-  { type: "challenge", voice: 2 },
+  { type: "lesson", id: "fair-shares" },
+  { type: "challenge", voice: 2, grades: "MH" },
+  { type: "lesson", id: "bill-of-rights" },
+  { type: "lesson", id: "supply-demand" },
 ];
