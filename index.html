@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cyberging™ · The Cyberg™ Movement</title>
+<meta name="description" content="The Cyberg™ Movement. Sovereign minds. Shared power. Swipe through videos and challenges, and learn to pair and sync with your own AI squad.">
+<meta name="theme-color" content="#04080f">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="The Cyberg™ Movement">
+<meta property="og:description" content="Sovereign minds. Shared power.">
+<meta property="og:image" content="media/hero-poster.jpg">
+<style>
+@font-face{font-family:"Montserrat";src:url(fonts/montserrat.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Inter";src:url(fonts/inter-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Inter";src:url(fonts/inter-600.woff2) format("woff2");font-weight:600;font-display:swap}
+:root{
+  --bg:#04080f; --ink:#eef2ff; --dim:#9aa6c2; --gold:#ffc74d; --cyan:#73e0ff;
+  --card-h:min(calc(100svh - 40px), calc((100vw - 40px) * 16 / 9));
+  --card-w:calc(var(--card-h) * 9 / 16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y mandatory;background:var(--bg);-webkit-text-size-adjust:100%}
+body{color:var(--ink);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}
+sup.tm{font-size:.32em;vertical-align:.95em;letter-spacing:0;margin-left:.04em;font-weight:600}
+.snap{scroll-snap-align:start;scroll-snap-stop:always;height:100svh;position:relative}
+
+/* ---------- HERO ---------- */
+.hero{overflow:hidden;display:grid;place-items:center;text-align:center;z-index:2;background:#000}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.38) 0%,rgba(0,0,0,.66) 70%),linear-gradient(180deg,rgba(4,8,15,.2) 0%,rgba(4,8,15,0) 40%,rgba(4,8,15,.9) 100%)}
+.hero-inner{position:relative;z-index:1;padding:0 20px;animation:rise 1.6s .2s both cubic-bezier(.2,.7,.2,1)}
+.h-top,.h-bot{font-family:Montserrat,sans-serif;font-weight:800;line-height:.98;letter-spacing:.08em;display:block}
+.h-top{font-size:clamp(44px,8.6vw,124px);color:#fff;text-shadow:0 4px 40px rgba(0,0,0,.6)}
+.h-bot{font-size:clamp(44px,8.6vw,124px);color:var(--gold);text-shadow:0 0 50px rgba(255,180,60,.35)}
+.tag{margin-top:clamp(14px,2.4vw,30px);font-size:clamp(19px,2.6vw,38px);color:#e8ecff}
+.hero-link{display:inline-block;margin-top:clamp(14px,2vw,26px);font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.04em;
+  color:var(--gold);text-decoration:none;font-size:clamp(15px,1.7vw,26px)}
+.hero-link:hover{text-decoration:underline}
+.cue{position:absolute;bottom:max(22px,env(safe-area-inset-bottom));left:0;right:0;z-index:1;text-align:center;
+  font-family:Montserrat,sans-serif;font-weight:700;font-size:13px;letter-spacing:.32em;color:var(--dim);text-decoration:none}
+.cue span{display:block;margin:10px auto 0;width:22px;height:22px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);
+  transform:rotate(45deg);animation:bob 1.8s infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(45deg);opacity:.5}50%{transform:translateY(8px) rotate(45deg);opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+
+/* ---------- SIDE FILL (behind the feed) ---------- */
+#field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.rail{position:fixed;top:50%;transform:translateY(-50%);z-index:1;display:none;pointer-events:none;
+  font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.28em;font-size:12px;color:var(--dim);opacity:0;transition:opacity .6s}
+.rail.on{opacity:1}
+.rail-l{right:calc(50% + var(--card-w) / 2 + 44px)}
+.rail-r{left:calc(50% + var(--card-w) / 2 + 44px)}
+.rail h4{font:inherit;font-size:11px;color:#6f7b97;margin-bottom:22px}
+.journey{position:relative;padding-left:26px}
+.journey::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,.1)}
+.journey i{position:absolute;left:5px;top:6px;width:2px;height:var(--p,0%);max-height:calc(100% - 12px);
+  background:linear-gradient(var(--cyan),var(--gold));box-shadow:0 0 12px var(--cyan);transition:height .5s}
+.journey li{list-style:none;position:relative;margin:0 0 54px;transition:color .5s}
+.journey li:last-child{margin-bottom:0}
+.journey li::before{content:"";position:absolute;left:-26px;top:1px;width:12px;height:12px;border-radius:50%;
+  background:#0b1220;border:2px solid #3a4560;transition:all .5s}
+.journey li.lit{color:#fff}
+.journey li.lit::before{border-color:var(--gold);background:var(--gold);box-shadow:0 0 14px var(--gold)}
+.squad{display:grid;gap:16px}
+.squad b{display:flex;align-items:center;gap:12px;font-weight:700;transition:color .5s}
+.squad b::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid var(--c);opacity:.35;transition:all .5s}
+.squad b.lit{color:#fff}
+.squad b.lit::before{background:var(--c);opacity:1;box-shadow:0 0 14px var(--c)}
+@media (min-width:1000px) and (min-height:560px){.rail{display:block}}
+
+/* ---------- FEED ---------- */
+.feed{position:relative;z-index:1}
+.slide{display:grid;place-items:center}
+.card{position:relative;width:var(--card-w);height:var(--card-h);border-radius:22px;overflow:hidden;background:#060b14;
+  box-shadow:0 0 0 1px rgba(255,255,255,.07),0 30px 90px rgba(0,0,0,.7),0 0 80px rgba(80,160,255,.06)}
+@media (max-width:600px){
+  :root{--card-h:100svh;--card-w:100vw}
+  .card{border-radius:0;box-shadow:none}
+}
+.card video,.card iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;background:#000}
+.card .meta{position:absolute;left:0;right:0;top:0;padding:18px 18px 40px;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,0))}
+.meta .l{font-family:Montserrat,sans-serif;font-weight:700;font-size:15px}
+.meta .c{font-size:13px;color:#c9d2ea;margin-top:3px}
+.kil{position:absolute;left:14px;bottom:max(16px,env(safe-area-inset-bottom));z-index:3;height:46px;display:flex;align-items:center;gap:8px;
+  padding:0 16px;border-radius:23px;border:1px solid rgba(255,199,77,.55);background:rgba(0,0,0,.5);color:#fff;text-decoration:none;
+  font-family:Montserrat,sans-serif;font-weight:700;font-size:13px;letter-spacing:.03em;backdrop-filter:blur(6px)}
+.kil b{color:var(--gold)}
+.game .kil{position:static;justify-content:center;margin-top:8px;height:42px}
+.sub{font-size:12.5px;color:var(--cyan);margin:-6px 0 10px}
+.snd{position:absolute;right:14px;bottom:max(16px,env(safe-area-inset-bottom));z-index:3;width:46px;height:46px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:#fff;font-size:20px;cursor:pointer;backdrop-filter:blur(6px)}
+
+/* ---------- CHALLENGE CARD ---------- */
+.game{display:flex;flex-direction:column;padding:22px 18px max(18px,env(safe-area-inset-bottom));
+  background:radial-gradient(ellipse at 50% 0%,rgba(115,224,255,.13),transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(255,199,77,.1),transparent 55%),#060b14}
+.game .kick{font-family:Montserrat,sans-serif;font-weight:700;font-size:11px;letter-spacing:.3em;color:var(--gold)}
+.game h2{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(20px,calc(var(--card-w) * .068),28px);line-height:1.15;margin:8px 0 12px}
+.game ol{list-style:none;counter-reset:n;flex:1 1 auto;overflow-y:auto;padding-right:4px;margin-bottom:12px;
+  mask-image:linear-gradient(180deg,#000 85%,transparent);-webkit-mask-image:linear-gradient(180deg,#000 85%,transparent)}
+.game li{counter-increment:n;position:relative;padding:7px 0 7px 30px;font-size:clamp(13px,calc(var(--card-w) * .038),15.5px);line-height:1.4;color:#dde4f7;
+  border-bottom:1px solid rgba(255,255,255,.06)}
+.game li::before{content:counter(n);position:absolute;left:0;top:7px;font-family:Montserrat,sans-serif;font-weight:700;font-size:12px;color:var(--cyan)}
+.game li:last-child{padding-bottom:30px}
+.ask{font-size:13px;color:var(--dim);margin-bottom:9px}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.picks button{font-family:Montserrat,sans-serif;font-weight:700;font-size:clamp(11px,calc(var(--card-w) * .033),13.5px);letter-spacing:.04em;
+  padding:12px 6px;border-radius:12px;cursor:pointer;color:#fff;background:rgba(255,255,255,.04);
+  border:1.5px solid color-mix(in srgb,var(--c) 45%,transparent);transition:transform .15s,background .2s,box-shadow .2s}
+.picks button:last-child{grid-column:1 / -1}
+.picks button:active{transform:scale(.96)}
+.picks button.on{background:color-mix(in srgb,var(--c) 28%,transparent);border-color:var(--c);box-shadow:0 0 22px color-mix(in srgb,var(--c) 55%,transparent)}
+.locked{display:none;text-align:center}
+.game.done .locked{display:block;animation:rise .5s both}
+.game.done .ask{display:none}
+.tagl{font-family:Montserrat,sans-serif;font-weight:700;font-size:12.5px;color:var(--gold);margin-top:10px}
+.call{font-family:Montserrat,sans-serif;font-weight:800;font-size:17px;margin:6px 0 4px}
+.call em{font-style:normal;color:var(--gold)}
+.note{font-size:12px;color:var(--dim);margin-bottom:12px}
+.ctas{display:grid;grid-template-columns:1fr auto;gap:8px}
+.cta{display:block;text-decoration:none;font-family:Montserrat,sans-serif;font-weight:800;font-size:14px;padding:13px 12px;border-radius:12px;
+  background:var(--gold);color:#1a1205;border:0;cursor:pointer}
+.cta.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+
+/* ---------- END ---------- */
+.end{display:grid;place-items:center;text-align:center;padding:0 24px;z-index:1}
+.end .h-top,.end .h-bot{font-size:clamp(38px,6vw,84px)}
+.end .tag{font-size:clamp(17px,2vw,26px)}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.promise{margin:30px auto 0;max-width:520px;font-size:13px;line-height:1.55;color:var(--dim);
+  border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 18px;background:rgba(4,8,15,.6)}
+.promise b{color:#fff}
+@media (max-width:600px){.hero{place-items:start center}.hero-inner{margin-top:24svh}
+  .hero-inner::before{content:"";position:absolute;inset:-30px -10px;z-index:-1;background:radial-gradient(ellipse at center,rgba(0,0,0,.75),rgba(0,0,0,0) 70%)}
+  .hero::after{background:radial-gradient(ellipse at 50% 48%,rgba(0,0,0,.6) 0%,rgba(0,0,0,.72) 75%),linear-gradient(180deg,transparent 60%,rgba(4,8,15,.9))}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<section class="snap hero" id="top">
+  <img class="poster" src="media/hero-poster.jpg" alt="">
+  <video id="heroVid" muted playsinline loop preload="auto" poster="media/hero-poster.jpg" aria-hidden="true">
+    <source src="media/hero-bg.mp4" type="video/mp4">
+  </video>
+  <div class="hero-inner">
+    <h1><span class="h-top">THE CYBERG<sup class="tm">™</sup></span><span class="h-bot">MOVEMENT</span></h1>
+    <p class="tag">Sovereign minds. Shared power.</p>
+    <a class="hero-link" href="https://talkspresso.com/maxbruce" target="_blank" rel="noopener">talkspresso.com/maxbruce</a>
+  </div>
+  <a class="cue" href="#feed">SCROLL TO BEGIN<span></span></a>
+</section>
+
+<canvas id="field" aria-hidden="true"></canvas>
+
+<aside class="rail rail-l" aria-hidden="true">
+  <h4>YOUR PATH</h4>
+  <ul class="journey"><i></i><li>SCROLLER</li><li>BUILDER</li><li>CYBERG<sup class="tm">™</sup></li></ul>
+</aside>
+<aside class="rail rail-r" aria-hidden="true">
+  <h4>YOUR SQUAD</h4>
+  <div class="squad">
+    <b style="--c:#ffc74d">YOU</b><b style="--c:#4dd9ff">AI</b><b style="--c:#ad7aff">AI</b>
+    <b style="--c:#52ff9e">AI</b><b style="--c:#ff7a6b">AI</b><b style="--c:#dbe5ff">AI</b>
+  </div>
+</aside>
+
+<main class="feed" id="feed"></main>
+
+<section class="snap end" id="end">
+  <div>
+    <span class="h-top">JOIN THE</span>
+    <span class="h-bot">CYBERG<sup class="tm">™</sup> MOVEMENT</span>
+    <p class="tag" style="margin-top:18px">Paired. Synced. Still you.</p>
+    <div class="links">
+      <a class="cta" href="https://thefinalsay.org/commandments/" target="_blank" rel="noopener">Take the full challenge</a>
+      <a class="cta ghost" href="https://talkspresso.com/maxbruce" target="_blank" rel="noopener">Meet Max on Talkspresso</a>
+    </div>
+    <p class="promise"><b>cyberging.org collects nothing.</b> No accounts, no sign-ups, no tracking. Your guesses stay on your screen, and your MVUP stays yours.</p>
+  </div>
+</section>
+
+<script src="challenge-data.js"></script>
+<script src="feed.js"></script>
+<script>
+(function(){
+  "use strict";
+  var AI_COLORS=["#ff9f7a","#4dd9ff","#ad7aff","#7aa8ff","#52ff9e","#ff7ac8","#dbe5ff"];
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- hero video: start when ready, fall back to poster ---------- */
+  var hv=document.getElementById("heroVid");
+  if(reduce){hv.remove()}else{
+    hv.addEventListener("playing",function(){document.querySelector(".hero .poster").style.opacity=0});
+    var p=hv.play(); if(p&&p.catch)p.catch(function(){});
+  }
+
+  /* ---------- helpers ---------- */
+  function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function ytId(u){
+    var m=String(u).match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:shorts\/|embed\/|watch\?(?:.*&)?v=|live\/))([A-Za-z0-9_-]{11})/);
+    return m?m[1]:null;
+  }
+
+  function kilroy(it){
+    var u=it.kilroy||window.KILROY_DEFAULT;
+    if(!u)return null;
+    var a=el("a","kil","<b>✍</b> Kilroy was here →"); a.href=u; a.target="_blank"; a.rel="noopener";
+    a.setAttribute("aria-label","Sign the Kilroy wall on Instagram"); return a;
+  }
+
+  /* ---------- build the feed from feed.js ---------- */
+  var feed=document.getElementById("feed"), items=window.CYBERG_FEED||[], C=window.CHALLENGE;
+  items.forEach(function(it,idx){
+    var s=el("section","snap slide"); s.dataset.i=idx;
+    var card=el("div","card");
+    if(it.type==="challenge"&&C){
+      buildGame(card,it);
+    }else{
+      var id=ytId(it.url);
+      if(id){
+        card.dataset.yt=id;   // iframe is created only when the card comes into view
+      }else{
+        var v=el("video"); v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute("playsinline","");
+        v.preload="metadata"; if(it.poster)v.poster=it.poster; v.src=it.url;
+        card.appendChild(v);
+        var b=el("button","snd","🔇"); b.setAttribute("aria-label","Turn sound on");
+        b.onclick=function(){v.muted=!v.muted;b.textContent=v.muted?"🔇":"🔊";b.setAttribute("aria-label",v.muted?"Turn sound on":"Turn sound off")};
+        card.appendChild(b);
+      }
+      var k=kilroy(it); if(k)card.appendChild(k);
+      if(it.label||it.caption){
+        card.appendChild(el("div","meta",'<div class="l">'+esc(it.label)+'</div><div class="c">'+esc(it.caption)+'</div>'));
+      }
+    }
+    s.appendChild(card); feed.appendChild(s);
+  });
+
+  function buildGame(card,it){
+    var n=Math.max(1,Math.min(C.voices.length,it.voice||1)), v=C.voices[n-1];
+    card.classList.add("game");
+    var nn=(n<10?"0":"")+n;
+    card.innerHTML='<div class="kick">THE CHALLENGE · VOICE '+nn+'</div>'+
+      '<h2>'+esc(C.title)+'</h2>'+(C.subtitle?'<div class="sub">'+esc(C.subtitle)+'</div>':'')+
+      '<ol>'+v.c.map(function(t){return"<li>"+esc(t)+"</li>"}).join("")+'</ol>'+
+      '<div class="ask">Read them, then make your call:</div>'+
+      '<div class="picks">'+C.names.map(function(name,k){return'<button type="button" style="--c:'+AI_COLORS[k%AI_COLORS.length]+'">'+esc(name)+'</button>'}).join("")+'</div>'+
+      '<div class="locked">'+(C.tagline?'<div class="tagl">'+esc(C.tagline).replace(/\. (?=[^.]*\.?$)/,'.<br>')+'</div>':'')+'<div class="call">Your call: <em></em></div>'+
+      '<div class="note">'+esc(C.revealNote)+'</div>'+
+      '<div class="ctas"><a class="cta" href="'+esc(C.fullChallengeUrl)+'" target="_blank" rel="noopener">Lock it in → thefinalsay.org</a>'+
+      '<button class="cta ghost share" type="button">Share</button></div></div>';
+    var kg=kilroy(it); if(kg)card.querySelector(".locked").appendChild(kg);
+    var btns=card.querySelectorAll(".picks button"), pick=null;
+    btns.forEach(function(b){b.onclick=function(){
+      btns.forEach(function(x){x.classList.remove("on")}); b.classList.add("on"); pick=b.textContent;
+      card.querySelector(".call em").textContent=pick; card.classList.add("done"); progress.mark(card);
+    }});
+    card.querySelector(".share").onclick=function(){
+      var text="I think Voice "+nn+" of the AI Commandments was written by "+pick+". Can you tell which AI wrote it?";
+      var url="https://cyberging.org/";
+      if(navigator.share){navigator.share({title:"The Cyberg™ Challenge",text:text,url:url}).catch(function(){})}
+      else if(navigator.clipboard){navigator.clipboard.writeText(text+" "+url);this.textContent="Copied!"}
+    };
+  }
+
+  /* ---------- play what's on screen, pause the rest ---------- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var card=e.target, v=card.querySelector("video");
+    if(e.isIntersecting&&e.intersectionRatio>.6){
+      if(v){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+      if(card.dataset.yt&&!card.querySelector("iframe")){
+        var f=el("iframe"); f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen=true;
+        f.title="Video"; f.src="https://www.youtube-nocookie.com/embed/"+card.dataset.yt+"?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&loop=1&playlist="+card.dataset.yt;
+        card.insertBefore(f,card.firstChild);
+      }
+      progress.mark(card);
+    }else if(v){v.pause()}
+  })},{threshold:[0,.6,1]});
+  document.querySelectorAll(".card").forEach(function(c){io.observe(c)});
+
+  /* ---------- side rails: Scroller → Builder → Cyberg, squad lights up ---------- */
+  var progress=(function(){
+    var seen=new Set(), total=Math.max(1,items.length);
+    var rails=document.querySelectorAll(".rail"), steps=document.querySelectorAll(".journey li"),
+        bar=document.querySelector(".journey i"), dots=document.querySelectorAll(".squad b");
+    function draw(){
+      var f=seen.size/total;
+      bar.style.setProperty("--p",(f*100)+"%");
+      steps.forEach(function(s,k){s.classList.toggle("lit",f>=k/2)});
+      dots.forEach(function(d,k){d.classList.toggle("lit",k===0||f>=k/(dots.length-1))});
+      field.level=f;
+    }
+    return{mark:function(c){seen.add(c);draw()},show:function(on){rails.forEach(function(r){r.classList.toggle("on",on)})},draw:draw};
+  })();
+
+  /* ---------- living constellation in the side space ---------- */
+  var field=(function(){
+    var cv=document.getElementById("field"), cx=cv.getContext("2d"), W,H,DPR, stars=[], nodes=[], api={level:0,visible:false};
+    var NODE_COLS=["#ffc74d","#4dd9ff","#ad7aff","#52ff9e","#ff7a6b","#dbe5ff"];
+    function resize(){
+      DPR=Math.min(2,window.devicePixelRatio||1); W=innerWidth; H=innerHeight;
+      cv.width=W*DPR; cv.height=H*DPR; cx.setTransform(DPR,0,0,DPR,0,0);
+      stars=[]; for(var i=0;i<Math.round(W*H/9000);i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,a:Math.random()*.6+.15,t:Math.random()*6});
+      nodes=[];
+      // two constellations, one on each side of the 9:16 column, each a YOU + 5 AI squad
+      [0,1].forEach(function(side){
+        var cardW=colW();
+        var gutter=(W-cardW)/2, outer=Math.max(0,gutter-200), cxs=side?W-outer/2:outer/2, R=Math.min(outer*.36,H*.19);
+        for(var k=0;k<6;k++){
+          var a=-Math.PI/2+k*Math.PI*2/6+(side?Math.PI/6:0);
+          nodes.push({side:side,k:k,bx:cxs,by:H*(side?.6:.4),R:R,a:a,ph:Math.random()*6,c:NODE_COLS[k]});
+        }
+      });
+    }
+    function colW(){var c=document.querySelector(".card");return c?c.getBoundingClientRect().width:Math.min(W,H*.5625)}
+    function glow(x,y,r,c,a){var g=cx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,hexA(c,a));g.addColorStop(1,hexA(c,0));cx.fillStyle=g;cx.beginPath();cx.arc(x,y,r,0,7);cx.fill()}
+    function hexA(h,a){var n=parseInt(h.slice(1),16);return"rgba("+(n>>16)+","+(n>>8&255)+","+(n&255)+","+a+")"}
+    function frame(t){
+      requestAnimationFrame(frame);
+      if(!api.visible)return;
+      t/=1000; cx.clearRect(0,0,W,H);
+      stars.forEach(function(s){cx.globalAlpha=s.a*(.6+.4*Math.sin(t*.8+s.t));cx.fillStyle="#cfe0ff";cx.fillRect(s.x,s.y,s.r,s.r)});
+      cx.globalAlpha=1;
+      if(!((W-colW())/2-200>150))return;   // only when there's room beside the rails   // phones: the feed fills the screen, sides stay a quiet starfield
+      var lv=api.level, links=Math.round(5+lv*10);
+      cx.globalCompositeOperation="lighter";
+      [0,1].forEach(function(side){
+        var pts=nodes.filter(function(n){return n.side===side}).map(function(n){
+          var rot=t*.05*(side?-1:1), R=n.R*(1+.06*Math.sin(t*.7+n.ph));
+          return{x:n.bx+Math.cos(n.a+rot)*R,y:n.by+Math.sin(n.a+rot)*R*1.25,c:n.c,k:n.k,ph:n.ph};
+        });
+        // filaments: YOU to each AI first, then AI to AI as the squad syncs
+        var pairs=[[0,1],[0,2],[0,3],[0,4],[0,5],[1,2],[2,3],[3,4],[4,5],[5,1],[1,3],[2,4],[3,5],[4,1],[5,2]].slice(0,links);
+        pairs.forEach(function(p,i){
+          var A=pts[p[0]],B=pts[p[1]],g=cx.createLinearGradient(A.x,A.y,B.x,B.y);
+          g.addColorStop(0,hexA(A.c,.32));g.addColorStop(1,hexA(B.c,.32));
+          cx.strokeStyle=g;cx.lineWidth=1.2;cx.beginPath();cx.moveTo(A.x,A.y);cx.lineTo(B.x,B.y);cx.stroke();
+          var u=(t*.28+i*.137)%1, src=i%2?A:B, s=i%2?u:1-u;
+          glow(A.x+(B.x-A.x)*s,A.y+(B.y-A.y)*s,9,src.c,.75);
+        });
+        pts.forEach(function(P){
+          var big=P.k===0?1.35:1, beat=1+.08*Math.sin(t*(P.k?1.6:2.2)+P.ph);
+          glow(P.x,P.y,34*big*beat,P.c,.32); glow(P.x,P.y,9*big*beat,P.c,.95); glow(P.x,P.y,3.5*big,"#ffffff",.9);
+        });
+      });
+      cx.globalCompositeOperation="source-over";
+    }
+    resize(); addEventListener("resize",resize);
+    if(!reduce)requestAnimationFrame(frame);else{api.visible=true;frame(0);}
+    return api;
+  })();
+
+  /* show the side fill and rails only once the hero has scrolled away */
+  var heroIO=new IntersectionObserver(function(es){
+    var gone=es[0].intersectionRatio<.35; field.visible=gone; progress.show(gone);
+    document.getElementById("field").style.opacity=gone?1:0;
+    if(hv&&hv.isConnected){gone?hv.pause():hv.play().catch(function(){})}
+  },{threshold:[0,.35,1]});
+  heroIO.observe(document.getElementById("top"));
+  document.getElementById("field").style.transition="opacity .8s";
+  progress.draw();
+})();
+</script>
+</body>
+</html>
