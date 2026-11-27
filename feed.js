@@ -36,6 +36,8 @@
    PROMISE screen (a short line between cards):
      { type: "note", text: "No ads. *Ever.*" },
      *stars* make words gold. Shown to every grade.
+     Add  always: true  to make sure it's never skipped (other promise
+     screens are spaced at least 3 cards apart when a grade filter is on).
 
    Add, remove or reorder whole { ... }, blocks.
    Keep the comma after each closing } and the quotes around text.
@@ -70,6 +72,6 @@ window.CYBERG_FEED = [
   { type: "video", url: "media/v-youth-liquid.mp4", poster: "media/v-youth-liquid.jpg" },
   { type: "challenge", voice: 6, grades: "MH", bg: "media/bg-challenge-06.mp4" },
   { type: "video", url: "media/v-liquid.mp4", poster: "media/v-liquid.jpg" },
-  { type: "note", text: "Let's keep *humans* in control." },
+  { type: "note", text: "Let's keep *humans* in control.", always: true },
   { type: "challenge", voice: 7, grades: "MH", bg: "media/bg-challenge-07.mp4" },
 ];

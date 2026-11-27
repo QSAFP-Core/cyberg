@@ -372,7 +372,7 @@ body.g-E .kil{display:none}
   var feed=document.getElementById("feed"), items=window.CYBERG_FEED||[], C=window.CHALLENGE;
   items.forEach(function(it,idx){
     if(it.type==="note"){
-      var ns=el("section","snap slide pnote"); ns.dataset.grades="EMH"; ns.dataset.note="1";
+      var ns=el("section","snap slide pnote"); ns.dataset.grades="EMH"; ns.dataset.note=it.always?"always":"1";
       ns.innerHTML='<div><p>'+esc(it.text).replace(/\*([^*]+)\*/g,"<em>$1</em>")+'</p><small>CYBERGING™</small></div>';
       feed.appendChild(ns); return;
     }
@@ -646,10 +646,10 @@ body.g-E .kil{display:none}
     var since=0;   // cards since the last promise screen: keep at least 3 between them
     document.querySelectorAll(".slide").forEach(function(s){
       if(s.hidden)return;
-      if(s.dataset.note){if(since<3)s.hidden=true;else since=0}else since++;
+      if(s.dataset.note){if(since<3&&s.dataset.note!=="always")s.hidden=true;else since=0}else since++;
     });
     var vis=[].slice.call(document.querySelectorAll(".slide:not([hidden])")); var last=vis[vis.length-1];
-    if(last&&last.dataset.note)last.hidden=true;
+    if(last&&last.dataset.note==="1")last.hidden=true;
     gbtns.forEach(function(b){b.classList.toggle("on",b.dataset.g===g)});
     document.body.classList.toggle("g-E",g==="E");
     store.set("grade",g); progress.draw();
@@ -679,23 +679,5 @@ body.g-E .kil{display:none}
   if(er)er.onclick=function(){store.clear();document.querySelectorAll(".lsn textarea").forEach(function(t){t.value=""});er.textContent="Erased. Nothing is left on this phone."};
 })();
 </script>
-<!-- Default Statcounter code for I AM A CYBERG
-https://cyberging.org -->
-<script type="text/javascript">
-var sc_project=13372605; 
-var sc_invisible=0; 
-var sc_security="eee7b524"; 
-var scJsHost = "https://";
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="Web Analytics
-Made Easy - Statcounter" href="https://statcounter.com/"
-target="_blank"><img class="statcounter"
-src="https://c.statcounter.com/13372605/0/eee7b524/0/"
-alt="Web Analytics Made Easy - Statcounter"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
 </body>
 </html>
